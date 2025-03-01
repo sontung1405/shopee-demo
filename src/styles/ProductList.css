@@ -1,0 +1,28 @@
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.product-list div {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  width: calc(33.333% - 2rem);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-list div:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-list h2 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.product-list p {
+  font-size: 1rem;
+  color: #888;
+}
