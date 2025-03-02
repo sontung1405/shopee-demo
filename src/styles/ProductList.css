@@ -1,10 +1,8 @@
 .product-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding: 2rem;
+  justify-content: space-around;
 }
-
 .product-list div {
   border: 1px solid #ccc;
   padding: 1rem;

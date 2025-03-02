@@ -1,17 +1,21 @@
+// src/pages/ProductPage.js
 import React, { useEffect, useState } from 'react';
-import { getProducts } from '../api';
+import axios from 'axios';
 import ProductList from '../components/ProductList';
+import '../styles/ProductPage.css';
 
-function ProductPage() {
+const ProductPage = () => {
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getProducts();
-        setProducts(data);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
+        setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
+        setError('There was an error fetching the products.');
       }
     };
 
@@ -19,11 +23,15 @@ function ProductPage() {
   }, []);
 
   return (
-    <div>
-      <h1>Products</h1>
-      <ProductList products={products} />
+    <div className="product-page">
+      <h1>Product List</h1>
+      {error ? (
+        <p className="error-message">{error}</p>
+      ) : (
+        <ProductList products={products} />
+      )}
     </div>
   );
-}
+};
 
 export default ProductPage;
